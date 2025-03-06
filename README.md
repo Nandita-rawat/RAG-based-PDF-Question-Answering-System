@@ -11,28 +11,6 @@ This repository implements a **Retrieval-Augmented Generation (RAG) pipeline** f
 
 ---
 
-## 🛠️ Installation
-
-### 1️⃣ Install Dependencies
-```bash
-pip install -r requirements.txt
-```
-
-### 2️⃣ Set Up Astra DB (Vector Store)
-- **Create an account on Astra DB**: [Astra DB](https://www.datastax.com/products/datastax-astra)
-- **Get Database Credentials (Secure Connect Bundle)**
-- **Store credentials in `.env` file**:
-```env
-ASTRA_DB_SECURE_CONNECT_PATH=path/to/secure-connect-database_name.zip
-```
-
-### 3️⃣ Run the Application
-```bash
-python app.py
-```
-
----
-
 ## 🏗️ Architecture
 
 1. **Text Extraction**: Parses PDFs and extracts text.
@@ -64,7 +42,7 @@ graph TD;
 ```python
 query_text = "What is the main topic of the document?"
 retrieved_chunks = vector_store.as_retriever().get_relevant_documents(query_text)
-response = ollama_llm(query_text, retrieved_chunks)
+response = llm(query_text, retrieved_chunks)
 print(response)
 ```
 
